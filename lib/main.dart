@@ -1,20 +1,41 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(new MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  //inisialisasi string
+  String txt = '';
+  
+  @override
+  void initState() {
+    //declare stirng yang ditampilklan di awal sebelum button diklik
+    txt = 'Klik Tombol Ini';
+    super.initState();
+  }
+  
+  void changeTxt() {
+    setState(() {
+      //declare stirng yang ditampilklan di awal setelah button diklik
+      txt = "Tombol Sudah Diklik";
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Stateless Widget',
+      title: 'Stateful Widget',
       home: new Scaffold(
-        body: new Container(
-          color: Colors.blueAccent,
-          child: new Container(
-            color: Colors.lightGreen,
-            margin: new EdgeInsets.all(50.0),
+        body: new Center(
+          child: new RaisedButton(
+            onPressed: (){changeTxt();},
+            child: new Text(txt),
           ),
         ),
       ),
