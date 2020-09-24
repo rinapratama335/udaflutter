@@ -4,41 +4,31 @@ void main() {
   runApp(new MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  //inisialisasi string
-  String txt = '';
-  
-  @override
-  void initState() {
-    //declare stirng yang ditampilklan di awal sebelum button diklik
-    txt = 'Klik Tombol Ini';
-    super.initState();
-  }
-  
-  void changeTxt() {
-    setState(() {
-      //declare stirng yang ditampilklan di awal setelah button diklik
-      txt = "Tombol Sudah Diklik";
-    });
-  }
-  
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Stateful Widget',
+      title: 'Row dan Column',
       home: new Scaffold(
-        body: new Center(
-          child: new RaisedButton(
-            onPressed: (){changeTxt();},
-            child: new Text(txt),
-          ),
+        appBar: new AppBar(
+          title: new Text('Row & Column'),
         ),
-      ),
+        body: new Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new Text('This'),
+            new Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Text('This'),
+                new Text('is'),
+                new Text('Column')
+              ],
+            ),
+            new Text('Row')
+          ],
+        ),
+      )
     );
   }
 }
