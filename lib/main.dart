@@ -8,24 +8,29 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Row dan Column',
+      title: 'Dummy Application',
       home: new Scaffold(
         appBar: new AppBar(
-          title: new Text('Row & Column'),
+          title: new Text('List Widget'),
         ),
-        body: new Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        body: new ListView(
           children: <Widget>[
-            new Text('This'),
-            new Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                new Text('This'),
-                new Text('is'),
-                new Text('Column')
-              ],
+            new ListTile(
+              title: Text('List item 1'),
+              trailing: new Icon(Icons.arrow_forward),
             ),
-            new Text('Row')
+            new ListTile(
+              title: Text('List item 2'),
+              trailing: new Icon(Icons.arrow_forward),
+            ),
+            new ListTile(
+              title: Text('List item 3'),
+              trailing: new Icon(Icons.arrow_forward),
+            ),
+            new ListTile(
+              title: Text('List item 4'),
+              trailing: new Icon(Icons.arrow_forward),
+            ),
           ],
         ),
       )
