@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(new MyApp());
+  runApp(new MaterialApp(home: new MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -10,35 +10,33 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<int> item = new List();
-
-  @override
-  void initState() {
-    for(int i = 0; i < 30; i++) {
-      item.add(i);
-    }
-
-    super.initState();
-  }
-
-
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Dummy App Array List',
-      home: new Scaffold(
-        appBar: new AppBar(
-          title: new Text('List Arrat Widget'),
-        ),
-        body: new ListView.builder(
-          itemCount: item.length,
-          itemBuilder: (BuildContext context, int index) {
-            return new ListTile(
-              title: new Text('Item nomor: $index'),
-              trailing: new Icon(Icons.print),
-            );
-          },
-        ),
+    return new Scaffold(
+      body: new Stack(
+        alignment: Alignment.center,
+        children: <Widget>[
+          new Card(
+            color: Colors.red,
+            child: new Padding(padding: const EdgeInsets.all(250.0)),
+          ),
+          new Card(
+            color: Colors.yellow,
+            child: new Padding(padding: const EdgeInsets.all(200.0)),
+          ),
+          new Card(
+            color: Colors.green,
+            child: new Padding(padding: const EdgeInsets.all(150.0)),
+          ),
+          new Card(
+            color: Colors.blue,
+            child: new Padding(padding: const EdgeInsets.all(100.0)),
+          ),
+          new Card(
+            color: Colors.black,
+            child: new Padding(padding: const EdgeInsets.all(50.0)),
+          ),
+        ],
       ),
     );
   }
