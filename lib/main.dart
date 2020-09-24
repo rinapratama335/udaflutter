@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(new MaterialApp(home: new MyApp()));
+  runApp(new MaterialApp(home: new MyApp(),));
 }
 
 class MyApp extends StatefulWidget {
@@ -9,47 +9,44 @@ class MyApp extends StatefulWidget {
   _MyAppState createState() => _MyAppState();
 }
 
-// AppBar
-/*
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        backgroundColor: Colors.orange,
-        title: new Text('Appbar Widget'),
-        titleSpacing: 80.0,
-        elevation: 35.0,
-        toolbarOpacity: 0.5,
-      ),
-    );
-  }
-}
-*/
+class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
+  TabController tabController;
 
-// AppBar dengan Leading Action
-class _MyAppState extends State<MyApp> {
-  String txt = 'Halo';
+  void initState() {
+    tabController = new TabController(length: 4, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        backgroundColor: Colors.orange,
-        title: new Text('AppBar Widget'),
-        leading: new Icon(Icons.menu),
-        actions: <Widget>[
-          new IconButton(
-              icon: new Icon(Icons.access_time),
-              onPressed: () => {txt = 'This is Arrow Button'}
-              ),
-          new IconButton(
-              icon: new Icon(Icons.data_usage),
-              onPressed: () => {txt = 'This is Data Button'}
+        title: new Text('TabBar App'),
+        bottom: new TabBar(
+          controller: tabController,
+          tabs: <Widget>[
+            new Tab(icon: new Icon(Icons.home),),
+            new Tab(icon: new Icon(Icons.dashboard),),
+            new Tab(icon: new Icon(Icons.data_usage),),
+            new Tab(icon: new Icon(Icons.close),),
+          ],
+        ),
+      ),
+      body: new TabBarView(
+        controller: tabController,
+        children: <Widget>[
+          new Center(
+            child: new Text('Welcome to Home'),
+          ),
+          new Center(
+            child: new Text('Wolcome to Dashboard'),
+          ),
+          new Center(
+            child: new Text('Welcomr to data usage'),
+          ),
+          new Center(
+            child: new Text('Welcome to Close'),
           )
         ],
-      ),
-      body: new Center(
-        child: new Text(txt),
       ),
     );
   }
