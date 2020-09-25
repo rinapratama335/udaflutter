@@ -1,52 +1,22 @@
 import 'package:flutter/material.dart';
+import 'customw.dart';
 
 void main() {
-  runApp(new MaterialApp(home: new MyApp(),));
+  runApp(new application());
 }
 
-class MyApp extends StatefulWidget {
+class application extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  _applicationState createState() => _applicationState();
 }
 
-class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
-  TabController tabController;
-
-  void initState() {
-    tabController = new TabController(length: 4, vsync: this);
-  }
-
+class _applicationState extends State<application> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('TabBar App'),
-        bottom: new TabBar(
-          controller: tabController,
-          tabs: <Widget>[
-            new Tab(icon: new Icon(Icons.home),),
-            new Tab(icon: new Icon(Icons.dashboard),),
-            new Tab(icon: new Icon(Icons.data_usage),),
-            new Tab(icon: new Icon(Icons.close),),
-          ],
-        ),
-      ),
-      body: new TabBarView(
-        controller: tabController,
-        children: <Widget>[
-          new Center(
-            child: new Text('Welcome to Home'),
-          ),
-          new Center(
-            child: new Text('Wolcome to Dashboard'),
-          ),
-          new Center(
-            child: new Text('Welcomr to data usage'),
-          ),
-          new Center(
-            child: new Text('Welcome to Close'),
-          )
-        ],
+    return new MaterialApp(
+      title: 'Custom Method Widget',
+      home: new Scaffold(
+        body: new customwidget(),
       ),
     );
   }
