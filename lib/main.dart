@@ -10,30 +10,37 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String text = "";
+  String textButton = "";
+
+  void method1(value) {
+    setState(() {
+      textButton = value;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Input Text Widget',
+      title: 'Button Widget',
       home: new Scaffold(
         appBar: new AppBar(
-          title: new Text('TextField Widget')
+          title: new Text('Button widget'),
+          backgroundColor: Colors.pink,
         ),
         body: new Column(
           children: <Widget>[
-            new TextField(
-              onChanged: (String txt) {
-                setState(() {
-                  text = txt;
-                });
-              },
-              decoration: new InputDecoration(hintText: 'Input Username.......'),
+            new RaisedButton(
+              onPressed: (){
+                method1('You pressed button');
+              }, child: new Text('Klik Button'),
             ),
-            new Text(text)
+            new FlatButton(
+                onPressed: null, child: new Text('The Flat Button')
+            ),
+            new Text(textButton)
           ],
         ),
-      )
+      ),
     );
   }
 }
