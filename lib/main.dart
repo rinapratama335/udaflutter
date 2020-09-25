@@ -1,23 +1,39 @@
 import 'package:flutter/material.dart';
-import 'customw.dart';
 
 void main() {
-  runApp(new application());
+  runApp(new MyApp());
 }
 
-class application extends StatefulWidget {
+class MyApp extends StatefulWidget {
   @override
-  _applicationState createState() => _applicationState();
+  _MyAppState createState() => _MyAppState();
 }
 
-class _applicationState extends State<application> {
+class _MyAppState extends State<MyApp> {
+  String text = "";
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Custom Method Widget',
+      title: 'Input Text Widget',
       home: new Scaffold(
-        body: new customwidget(),
-      ),
+        appBar: new AppBar(
+          title: new Text('TextField Widget')
+        ),
+        body: new Column(
+          children: <Widget>[
+            new TextField(
+              onChanged: (String txt) {
+                setState(() {
+                  text = txt;
+                });
+              },
+              decoration: new InputDecoration(hintText: 'Input Username.......'),
+            ),
+            new Text(text)
+          ],
+        ),
+      )
     );
   }
 }
